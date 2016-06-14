@@ -21,6 +21,6 @@ class RefreshToken extends Token implements TokenInterface
     public function __construct()
     {
         parent::__construct();
-        $this->setClassKey(TokenPeer::CLASSKEY_3);
+        $this->setClassKey('3');
     }
 }

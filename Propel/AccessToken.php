@@ -21,6 +21,6 @@ class AccessToken extends Token implements TokenInterface
     public function __construct()
     {
         parent::__construct();
-        $this->setClassKey(TokenPeer::CLASSKEY_2);
+        $this->setClassKey('2');
     }
 }

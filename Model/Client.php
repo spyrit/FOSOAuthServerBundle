@@ -14,7 +14,7 @@ namespace FOS\OAuthServerBundle\Model;
 use FOS\OAuthServerBundle\Util\Random;
 use OAuth2\OAuth2;
 
-class Client implements ClientInterface
+class Client
 {
     /**
      * @var int

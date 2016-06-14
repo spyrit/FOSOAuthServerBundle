@@ -3,14 +3,9 @@
     <table name="client" phpName="Client" description="">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="random_id" type="varchar" required="true" />
-        <column name="redirect_uris" type="array" required="true" />
+        <column name="redirect_uris" type="array" typeHint="array" required="true" />
         <column name="secret" type="varchar" required="true" />
-        <column name="allowed_grant_types" type="array" required="true" />
-
-        <behavior name="typehintable">
-            <parameter name="redirect_uris" value="array" />
-            <parameter name="allowed_grant_types" value="array" />
-        </behavior>
+        <column name="allowed_grant_types" type="array" typeHint="array" required="true" />
     </table>
 
     <table name="token" phpName="Token" abstract="true" description="">
@@ -30,11 +25,6 @@
         <foreign-key foreignTable="client" onDelete="cascade">
             <reference local="client_id" foreign="id" />
         </foreign-key>
-
-        <behavior name="typehintable">
-            <parameter name="client" value="\FOS\OAuthServerBundle\Model\ClientInterface" />
-            <parameter name="user" value="\Symfony\Component\Security\Core\User\UserInterface" />
-        </behavior>
     </table>
 
     <table name="auth_code" phpName="AuthCode" description="">
@@ -49,10 +39,5 @@
         <foreign-key foreignTable="client" onDelete="cascade">
             <reference local="client_id" foreign="id" />
         </foreign-key>
-
-        <behavior name="typehintable">
-            <parameter name="client" value="\FOS\OAuthServerBundle\Model\ClientInterface" />
-            <parameter name="user" value="\Symfony\Component\Security\Core\User\UserInterface" />
-        </behavior>
     </table>
 </database>
