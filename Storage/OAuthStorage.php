@@ -121,7 +121,7 @@ class OAuthStorage implements IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2Gra
         return $this->accessTokenManager->findTokenByToken($token);
     }
 
-    public function createAccessToken($tokenString, IOAuth2Client $client, $data, $expires, $scope = null)
+    public function createAccessToken($tokenString, IOAuth2Client $client, $data, $expires, $scope = null, $originUserId = null)
     {
         if (!$client instanceof ClientInterface) {
             throw new \InvalidArgumentException('Client has to implement the ClientInterface');
@@ -132,6 +132,7 @@ class OAuthStorage implements IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2Gra
         $token->setClient($client);
         $token->setExpiresAt($expires);
         $token->setScope($scope);
+        $token->setOriginUserId($originUserId);
 
         if (null !== $data) {
             $token->setUser($data);
@@ -216,7 +217,7 @@ class OAuthStorage implements IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2Gra
     /**
      * {@inheritdoc}
      */
-    public function createRefreshToken($tokenString, IOAuth2Client $client, $data, $expires, $scope = null)
+    public function createRefreshToken($tokenString, IOAuth2Client $client, $data, $expires, $scope = null, $originUserId = null)
     {
         if (!$client instanceof ClientInterface) {
             throw new \InvalidArgumentException('Client has to implement the ClientInterface');
@@ -227,6 +228,7 @@ class OAuthStorage implements IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2Gra
         $token->setClient($client);
         $token->setExpiresAt($expires);
         $token->setScope($scope);
+        $token->setOriginUserId($originUserId);
 
         if (null !== $data) {
             $token->setUser($data);
