@@ -11,8 +11,9 @@
 
 namespace FOS\OAuthServerBundle\Propel;
 
-use FOS\OAuthServerBundle\Model\TokenManager as BaseTokenManager;
 use FOS\OAuthServerBundle\Model\TokenInterface;
+use FOS\OAuthServerBundle\Model\TokenManager as BaseTokenManager;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class TokenManager extends BaseTokenManager
 {
@@ -77,7 +78,7 @@ class TokenManager extends BaseTokenManager
         $queryClass = $this->class.'Query';
 
         return $queryClass::create()
-            ->filterByExpiresAt(time(), \Criteria::LESS_THAN)
+            ->filterByExpiresAt(time(), Criteria::LESS_THAN)
             ->delete();
     }
 }

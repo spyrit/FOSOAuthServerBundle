@@ -13,6 +13,7 @@ namespace FOS\OAuthServerBundle\Propel;
 
 use FOS\OAuthServerBundle\Model\AuthCodeManager as BaseAuthCodeManager;
 use FOS\OAuthServerBundle\Model\AuthCodeInterface;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class AuthCodeManager extends BaseAuthCodeManager
 {
@@ -77,7 +78,7 @@ class AuthCodeManager extends BaseAuthCodeManager
         $queryClass = $this->class.'Query';
 
         return $queryClass::create()
-            ->filterByExpiresAt(time(), \Criteria::LESS_THAN)
+            ->filterByExpiresAt(time(), Criteria::LESS_THAN)
             ->delete();
     }
 }
