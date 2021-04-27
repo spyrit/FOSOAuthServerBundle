@@ -48,7 +48,7 @@ interface TokenInterface extends IOAuth2Token
     public function getUser();
 
     /**
-     * @param ClientInterface $client
+     * @param Client $client
      */
     public function setClient(Client $client = null);
 }

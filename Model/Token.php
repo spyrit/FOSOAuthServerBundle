@@ -21,7 +21,7 @@ class Token implements TokenInterface
     protected $id;
 
     /**
-     * @var ClientInterface
+     * @var Client
      */
     protected $client;
 
@@ -133,7 +133,7 @@ class Token implements TokenInterface
     /**
      * {@inheritdoc}
      */
-    public function setUser(UserInterface $user)
+    public function setUser(UserInterface $user = null)
     {
         $this->user = $user;
     }
@@ -157,7 +157,7 @@ class Token implements TokenInterface
     /**
      * {@inheritdoc}
      */
-    public function setClient(ClientInterface $client)
+    public function setClient(Client $client = null)
     {
         $this->client = $client;
     }
