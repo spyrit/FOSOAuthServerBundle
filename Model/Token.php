@@ -11,6 +11,7 @@
 
 namespace FOS\OAuthServerBundle\Model;
 
+use FOS\OAuthServerBundle\Propel\Client;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class Token implements TokenInterface
